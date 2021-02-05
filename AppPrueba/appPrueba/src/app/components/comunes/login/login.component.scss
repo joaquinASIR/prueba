@@ -1,0 +1,83 @@
+ion-button {
+    --background: none;
+    background-color: rgb(221, 209, 99);
+    border-radius: 5px;
+    margin-top: 15px;
+    text-shadow: 0px 4px 4px rgb(0, 0, 0, 0.5);
+}
+
+ion-item {
+    --background: none;
+    background-color: rgba(165, 160, 111, 0.719);
+    margin: 5px;
+    border-radius: 5px;
+}
+
+ion-content {
+    --background: none;
+    background-color: rgba(241, 236, 186, 0.71);
+}
+
+ion-row {
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    --background: none;
+    background-color: rgba(138, 129, 53, 0.719);
+}
+
+ion-menu-button {
+    color: black;
+}
+
+ion-title {
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+ion-img {
+    width: 35%;
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+}
+
+ion-item.item-has-focus>ion-label {
+    color: rgb(114, 133, 32) !important;
+}
+
+.icon-facebook {
+    background-color: rgb(12, 12, 107);
+    width: 30%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-right: 0px;
+}
+
+.icon-instagram {
+    background-color: rgb(225, 48, 108);
+    width: 30%;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    margin-left: 0px;
+}
+
+.icon-twitter {
+    background-color: rgb(73, 135, 250);
+    width: 30%;
+    border-radius: none !important;
+    border-radius: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+p {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    display: flex !important;
+    justify-content: center !important;
+}

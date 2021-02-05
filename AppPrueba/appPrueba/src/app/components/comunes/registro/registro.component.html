@@ -1,0 +1,46 @@
+<ion-header>
+    <app-header seccion="Registro"></app-header>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-item>
+            <h2>Registro</h2>
+        </ion-item>
+
+        <ion-card-content>
+            <form (ngSubmit)="registro(fRegistro)" #fRegistro="ngForm">
+                <ion-item>
+                    <ion-label position="floating">Id</ion-label>
+                    <ion-input required name="id" type="number" [(ngModel)]="registroUsuario.id"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input required name="email" type="email" [(ngModel)]="registroUsuario.email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input required name="password" type="password" [(ngModel)]="registroUsuario.password"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Nombre</ion-label>
+                    <ion-input required name="name" type="text" [(ngModel)]="registroUsuario.nombre_usuario"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Apellidos</ion-label>
+                    <ion-input required name="surname" type="text" [(ngModel)]="registroUsuario.apellidos_usuario"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Perfil</ion-label>
+                    <ion-input required name="surname" type="number" [(ngModel)]="registroUsuario.perfilid"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Rol</ion-label>
+                    <ion-input required name="surname" type="text" [(ngModel)]="registroUsuario.rol"></ion-input>
+                </ion-item>
+                <ion-button expand="full" type="submit" [routerLink]="['/inicio']">Sig Up</ion-button>
+            </form>
+
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

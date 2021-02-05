@@ -1,0 +1,26 @@
+<app-header seccion="Bienvenido"></app-header>
+<ion-content>
+    <ion-img class="logo" src="/assets/logo.png"></ion-img>
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime suscipit provident natus dolorum sed ex, nostrum autem ullam ea error blanditiis inventore repudiandae saepe sapiente. Illo perferendis aliquid voluptatibus fugiat.
+    </p>
+
+
+    <ion-slides autoplay="2000" loop="true" speed="3000">
+        <ion-slide *ngFor='let articulo of articulos'>
+            <ion-card>
+                <ion-img src="http://prueba.test:80/apiprueba/public/img/{{articulo.imagen}}"></ion-img>
+                <ion-card-title> {{articulo.nombre_articulo}}</ion-card-title>
+                <!-- <ion-card-content>{{articulo.descripcion_articulo}}</ion-card-content> -->
+                <ion-card-subtitle>{{articulo.precio}}€</ion-card-subtitle>
+                <ion-buttons>
+                    <!-- <ion-button (click)="onClick()" color="danger">
+                        <ion-icon [name]=" favorito ? 'heart':'heart-outline'"></ion-icon>
+                    </ion-button> -->
+                </ion-buttons>
+
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+
+</ion-content>

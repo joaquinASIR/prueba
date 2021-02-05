@@ -1,0 +1,59 @@
+<ion-app>
+    <ion-split-pane contentId="main-content">
+        <ion-menu contentId="main-content" menuId="first" type="overlay" [swipeGesture]="false">
+
+            <ion-header class="header" *ngIf="usuario">
+
+                <ion-item class="header" lines="none">
+                    <ion-menu-button></ion-menu-button>
+                    Hola, {{usuario.nombre_usuario}}.
+                </ion-item>
+            </ion-header>
+            <ion-content>
+                <ion-list>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item routerLink="inicio">
+                            Inicio
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item routerLink="marcas">
+                            Mis pedidos
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item routerLink="login">
+                            Mi cuenta
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item routerLink="articulos">
+                            Lista de deseados
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item routerLink="categorias">
+                            Buscar por categorias
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item routerLink="marcas">
+                            Marcas
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item routerLink="articulos">
+                            Articulos
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item routerLink="faq">
+                            Atencion al cliente
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-split-pane>
+</ion-app>

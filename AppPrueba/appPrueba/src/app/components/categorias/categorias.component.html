@@ -1,0 +1,12 @@
+<app-header seccion="Categorias"></app-header>
+
+
+<ion-content>
+    <ion-card *ngFor="let categoria of categorias">
+        <ion-img src="http://prueba.test:80/apiprueba/public/img/{{categoria.logo}}"></ion-img>
+        <div>
+            <ion-title>{{categoria.nombre_categoria}} </ion-title>
+        </div>
+
+    </ion-card>
+</ion-content>

@@ -1,0 +1,35 @@
+.logo {
+    width: 300px;
+    height: 200px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 10px;
+    top: 50%;
+}
+
+ion-content {
+    --background: none;
+    background-color: rgba(241, 236, 186, 0.71);
+}
+
+p {
+    margin-left: 5px;
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+ion-card {
+    height: 250px;
+    width: 90%;
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px rgba(44, 43, 43, 0.3);
+}
+
+ion-img {
+    height: 200px;
+}
+
+ion-card-subtitle {
+    --color: none;
+    color: rgb(0, 0, 0);
+}

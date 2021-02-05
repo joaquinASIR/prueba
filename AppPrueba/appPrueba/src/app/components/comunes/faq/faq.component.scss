@@ -1,0 +1,24 @@
+ion-title {
+    margin-top: 30px;
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+ion-content {
+    --background: none;
+    background-color: rgba(241, 236, 186, 0.71);
+}
+
+h5 {
+    font-family: 'Noto Sans JP', sans-serif;
+    text-decoration: underline;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+p {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
