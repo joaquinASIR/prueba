@@ -34,8 +34,8 @@ Route::post('registro', [AuthController::class, 'registro']);
 Route::get('user', [AuthController::class, 'getUser']);
    
 
-Route::post('logout', [AuthController::class, 'logout']);
-    
+Route::post('logout', [AuthController::class, 'logout'])
+    ->middleware('auth:api');
     
 
 
