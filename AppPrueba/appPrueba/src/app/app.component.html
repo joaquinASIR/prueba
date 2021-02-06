@@ -9,7 +9,15 @@
                     Hola, {{usuario.nombre_usuario}}.
                 </ion-item>
             </ion-header>
+            <ion-header class="header" *ngIf="!usuario">
+
+                <ion-item class="header" lines="none">
+                    <ion-menu-button></ion-menu-button>
+                    Hola <a routerLink="login">logeate</a>o <a routerLink="registro">registrate</a>
+                </ion-item>
+            </ion-header>
             <ion-content>
+
                 <ion-list>
                     <ion-menu-toggle auto-hide="false">
                         <ion-item routerLink="inicio">
