@@ -31,8 +31,8 @@ Route::resource('admin/usuarios', UsuariosController::class);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('registro', [AuthController::class, 'registro']);
 
-Route::get('user', [AuthController::class, 'getUser']);
-   
+Route::get('user', [AuthController::class, 'getUser'])
+   ->middleware('auth:api');
 
 Route::post('logout', [AuthController::class, 'logout'])
     ->middleware('auth:api');
