@@ -2,10 +2,10 @@
 
 
 <ion-content>
-    <ion-card *ngFor="let categoria of categorias">
-        <ion-img src="http://prueba.test:80/apiprueba/public/img/{{categoria.logo}}"></ion-img>
+    <ion-card *ngFor="let c of categorias" [routerLink]="[ 'articulos', c.categoriaid]">
+        <ion-img src="http://prueba.test:80/apiprueba/public/img/{{c.logo}}"></ion-img>
         <div>
-            <ion-title>{{categoria.nombre_categoria}} </ion-title>
+            <ion-title>{{c.nombre_categoria}} </ion-title>
         </div>
 
     </ion-card>

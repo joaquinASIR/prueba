@@ -14,13 +14,6 @@ import { UiServiceService } from '../../../services/ui-service.service';
 export class RegistroComponent implements OnInit {
 
   registroUsuario: IUsuario  = {
-    id                : 1,
-    nombre_usuario    : 'Joaquin',
-    apellidos_usuario :'Manzano',
-    email             : 'joaquin@gmail.com',
-    password          : 'usuario',
-    perfilid          : 1,
-    rol               : 'admin'
     
   }
 

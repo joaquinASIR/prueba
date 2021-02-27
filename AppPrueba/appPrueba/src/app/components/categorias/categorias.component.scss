@@ -5,11 +5,26 @@ div {
     z-index: 99;
     bottom: 0px;
     opacity: 1;
-    background: rgba(241, 236, 186, 0.71);
+    background: rgba(0, 0, 0, 0.192);
     color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ion-title {
+    position: absolute;
+    color: white;
 }
 
 ion-content {
     --background: none;
     background-color: rgba(241, 236, 186, 0.71);
+}
+
+ion-card {}
+
+ion-img {
+    object-fit: cover !important;
+    height: 200px;
 }

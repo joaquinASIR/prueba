@@ -1,0 +1,40 @@
+ion-content {
+    --background: none;
+    background-color: rgba(241, 236, 186, 0.71);
+}
+
+ion-item {
+    --background: none;
+    --box-shadow: none;
+    --border-style: none;
+}
+
+ion-img {
+    height: 350px;
+}
+
+ion-title {
+    text-decoration: underline;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.desc {
+    margin-left: 15px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.precio {
+    font-size: 25px;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-left: 10px;
+}
+
+ion-button {
+    --background: none;
+    --box-shadow: none;
+}
+
+ion-icon {
+    height: 30px;
+    width: 30px;
+}

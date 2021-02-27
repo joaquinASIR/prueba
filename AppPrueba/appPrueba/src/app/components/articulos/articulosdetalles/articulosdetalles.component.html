@@ -1,0 +1,22 @@
+<app-header seccion="Articulos"></app-header>
+
+<ion-content>
+    <ng-container *ngIf="articulos">
+        <ion-img src="http://prueba.test:80/apiprueba/public/img/{{articulos.imagen}}"></ion-img>
+        <ion-title>{{articulos.nombre_articulo}}</ion-title>
+        <p class="desc">{{articulos.descripcion_articulo}}</p>
+        <ion-item>
+            <ion-button slot="end" (click)="favorito = !favorito">
+                <ion-icon color="danger" [name]=" favorito ? 'heart':'heart-outline'"></ion-icon>
+            </ion-button>
+            <p class="precio">{{articulos.precio}}€</p>
+        </ion-item>
+        <ion-item>
+            <ion-button>
+                <ion-icon color="dark" name="cart"></ion-icon>
+            </ion-button>
+        </ion-item>
+
+    </ng-container>
+
+</ion-content>

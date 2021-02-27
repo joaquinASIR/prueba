@@ -2,7 +2,30 @@
     <ion-split-pane contentId="main-content">
         <ion-menu contentId="main-content" menuId="first" type="overlay" [swipeGesture]="false">
 
-            <ion-header class="header" *ngIf="usuario">
+
+
+            <div *ngIf="usuario; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+                <ion-header class="header">
+                    <ion-item class="header" lines="none">
+                        <ion-menu-button></ion-menu-button>
+                        Hola, {{usuario.nombre_usuario}}.
+                    </ion-item>
+                </ion-header>
+            </ng-template>
+
+            <ng-template #elseBlock>
+                <ion-header class="header">
+                    <ion-item class="header" lines="none">
+                        <ion-menu-button></ion-menu-button>
+                        <ion-menu-toggle>
+                            Hola <a routerLink="login">logeate</a>o <a routerLink="registro">registrate</a>
+                        </ion-menu-toggle>
+                    </ion-item>
+                </ion-header>
+            </ng-template>
+
+            <!-- <ion-header class="header" *ngIf="usuario">
 
                 <ion-item class="header" lines="none">
                     <ion-menu-button></ion-menu-button>
@@ -13,9 +36,12 @@
 
                 <ion-item class="header" lines="none">
                     <ion-menu-button></ion-menu-button>
-                    Hola <a routerLink="login">logeate</a>o <a routerLink="registro">registrate</a>
+                    <ion-menu-toggle>
+                        Hola <a routerLink="login">logeate</a>o <a routerLink="registro">registrate</a>
+                    </ion-menu-toggle>
                 </ion-item>
-            </ion-header>
+
+            </ion-header> -->
             <ion-content>
 
                 <ion-list>
@@ -60,6 +86,7 @@
                         </ion-item>
                     </ion-menu-toggle>
                 </ion-list>
+                <p>Shopine &copy; {{anio}}</p>
             </ion-content>
         </ion-menu>
         <ion-router-outlet id="main-content"></ion-router-outlet>

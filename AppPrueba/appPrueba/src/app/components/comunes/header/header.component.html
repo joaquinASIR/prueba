@@ -3,7 +3,15 @@
         <ion-buttons>
             <ion-menu-button></ion-menu-button>
             <ion-title>{{seccion}}</ion-title>
-            <ion-icon class="perfil-icon" name="person-sharp" slot="end" routerLink="/perfil"></ion-icon>
+            <div *ngIf="!usuario; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+                <ion-icon class="perfil-icon" name="log-in-outline" slot="end" routerLink="/login"></ion-icon>
+            </ng-template>
+            <ng-template #elseBlock>
+                <ion-icon class="perfil-icon" name="person-sharp" slot="end" routerLink="/perfil"></ion-icon>
+            </ng-template>
+            <!-- <ion-icon *ngIf="!usuario" class="perfil-icon" name="log-in-outline" slot="end" routerLink="/login"></ion-icon>
+            <ion-icon *ngIf="usuario" class="perfil-icon" name="person-sharp" slot="end" routerLink="/perfil"></ion-icon> -->
         </ion-buttons>
     </ion-toolbar>
     <ion-searchbar [(ngModel)]="texto" placeholder="Buscar..." inputmode="text" (ionChange)="buscar($event)" [debounce]="250">
@@ -11,8 +19,9 @@
     </ion-searchbar>
 
     <ion-list *ngIf="texto !== ''">
-        <ion-item class="error">No se ha encontrado :{{texto}}</ion-item>
-        <ion-item *ngFor="let articulo of articulos | filter:texto; index as i" (click)="texto = articulo.nombre_articulo ">
+        <!--         <ion-item *ngIf="articulos.nombre_articulo" class="error">No se ha encontrado :{{texto}}</ion-item>
+ -->
+        <ion-item *ngFor="let articulo of articulos | filter:texto; index as i" (click)="texto = articulo.nombre_articulo " [routerLink]="[ '/articulos', articulo.articuloid]">
             <!-- <ion-item *ngIf="i == 0" class="error">No se ha encontrado :{{texto}}</ion-item> -->
             <p *ngIf="articulo.length != 0">{{ articulo.nombre_articulo }}</p>
         </ion-item>

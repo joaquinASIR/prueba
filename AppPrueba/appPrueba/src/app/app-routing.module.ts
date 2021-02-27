@@ -30,15 +30,15 @@ const routes: Routes = [
     loadChildren: () => import('./components/perfil/perfil.module').then(m => m.PerfilModule)
   },
   {
-    path: '',
+    path: 'marcas',
     loadChildren: () => import('./components/marcas/marcas.module').then(m => m.MarcasModule)
   },
   {
-    path: '',
+    path: 'articulos',
     loadChildren: () => import('./components/articulos/articulos.module').then(m => m.ArticulosModule)
   },
   {
-    path: '',
+    path: 'categorias',
     loadChildren: () => import('./components/categorias/categorias.module').then(m => m.CategoriasModule)
   }
 ];

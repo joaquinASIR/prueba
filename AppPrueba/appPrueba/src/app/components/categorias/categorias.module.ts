@@ -5,10 +5,12 @@ import { CategoriasRoutingModule } from './categorias-routing.module';
 import { CategoriasComponent } from './categorias.component';
 import { ComunesModule } from '../comunes/comunes.module';
 import { IonicModule } from '@ionic/angular';
+import { ArticuloscategoriasComponent } from './articuloscategorias/articuloscategorias.component';
+import { ArticulosdetallesComponent } from './articuloscategorias/articulosdetalles/articulosdetalles.component';
 
 
 @NgModule({
-  declarations: [CategoriasComponent],
+  declarations: [CategoriasComponent, ArticuloscategoriasComponent, ArticulosdetallesComponent],
   imports: [
     CommonModule,
     CategoriasRoutingModule,

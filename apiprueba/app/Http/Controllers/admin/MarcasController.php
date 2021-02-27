@@ -13,10 +13,28 @@ class MarcasController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function getArticulos($marcaid){
+        $articulos = Marcas::with('articulos')->where('marcaid', '=', $marcaid)->get();
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Articulos de la marca'. $marcaid ,
+            'code' => 401,
+            'data' => $articulos
+        ]);
+    }
+
     public function index()
     {
-        $marca = Marcas::with('articulos')->get();
-        return response()->json($marca);
+        /* $marca = Marcas::with('articulos')->get();
+        return response()->json($marca); */
+
+        $marcas = Marcas::with('articulos')->get();
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Marcas',
+            'code' => 401,
+            'data' => $marcas
+        ]);
     }
 
     /**

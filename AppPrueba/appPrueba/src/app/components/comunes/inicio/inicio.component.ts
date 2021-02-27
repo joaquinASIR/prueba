@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ArticulosService } from '../../../services/articulos.service';
 import { ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
+import { MsnApiArticulos, IArticulo } from '../../../Interfaces/ArticulosInterface';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,19 +13,18 @@ import { IonSlides } from '@ionic/angular';
 })
 export class InicioComponent implements OnInit {
 
-  articulos: any;
-  favorito = {}
+  public respuesta: MsnApiArticulos;
+  public articulos: IArticulo;
+  articuloid: any;
 
-  constructor(private articulosService: ArticulosService) { }
+  constructor(private articulosService: ArticulosService, private route: ActivatedRoute) {
+    this.articuloid = this.route.snapshot.paramMap.get('articuloid');
+   }
 
-  ngOnInit() {
-    this.articulosService.getArticulos().subscribe(data => {
-      this.articulos = data, console.log(data[0]);
-    });
-  }
-
-  onClick() {
-    this.favorito = !this.favorito;
+  async ngOnInit() {
+    let respuesta = await this.articulosService.getArticulos();
+    this.articulos = respuesta.data;
+    console.log(respuesta);
   }
   
   @ViewChild(IonSlides) slides: IonSlides;

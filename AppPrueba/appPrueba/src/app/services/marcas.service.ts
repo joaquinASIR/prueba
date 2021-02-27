@@ -1,14 +1,41 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { UsuariosService } from './usuarios.service';
+import { MsnApiMarcas } from '../Interfaces/ArticulosInterface';
+import { environment } from '../../environments/environment.prod';
 
+
+const URL= environment.url;
 @Injectable({
   providedIn: 'root'
 })
 export class MarcasService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private uService: UsuariosService) { }
 
-  public getMarcas(){
+
+  /* public getMarcas(){
     return this.http.get('http://prueba.test:80/apiprueba/public/api/admin/marcas')
+  } */
+
+  async getArticulosMarcas(marcaid):Promise<MsnApiMarcas>{
+    const ruta = `${ URL }/public/api/admin/marcas/${marcaid}/articulos`;    
+    return new Promise ( resolve => {
+      this.http.get<MsnApiMarcas>(ruta)
+        .subscribe ( respuesta => {
+          resolve( respuesta );
+        });
+    })
+    
+  }
+
+  async getMarcas(): Promise<MsnApiMarcas>{
+    const ruta = `${ URL }/public/api/admin/marcas`;
+    return new Promise ( resolve => {
+      this.http.get<MsnApiMarcas>(ruta)
+        .subscribe ( respuesta => {
+          resolve( respuesta );
+        })
+    })
   }
 }

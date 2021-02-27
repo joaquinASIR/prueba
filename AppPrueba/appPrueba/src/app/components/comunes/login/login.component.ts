@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     const peticion = await this.uService.login(this.loginUser.email, this.loginUser.password);
     if ( peticion.status == 'success' ){
       // navegar al home
-      this.navCtrl.navigateRoot('registro', { animated: true } );
+      this.navCtrl.navigateRoot('inicio', { animated: true } );
     }else {
       this.uiService.alertaInformativa('Usuario/Password no son válidos');
     }

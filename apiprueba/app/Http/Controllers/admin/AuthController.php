@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function registro(Request $request)
     {
         $rules = [
-            'id'       => 'required|integer',
+/*             'id'       => 'required|integer', */
             'rol'      => 'required',
             'nombre_usuario'     => 'required',
             'apellidos_usuario'  => 'required',

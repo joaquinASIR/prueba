@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MarcasService } from '../../services/marcas.service';
+import { IMarca } from '../../Interfaces/ArticulosInterface';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -8,13 +10,18 @@ import { MarcasService } from '../../services/marcas.service';
   styleUrls: ['./marcas.component.scss'],
 })
 export class MarcasComponent implements OnInit {
-
+  marca: IMarca[];
   marcas: any;
 
-  constructor(private marcasService: MarcasService) { }
+  constructor(private marcasService: MarcasService, private route: ActivatedRoute) { 
+    this.marcas = this.route.snapshot.paramMap.get('marcaid');
+  }
 
-  ngOnInit() {
-    this.marcasService.getMarcas().subscribe(data => {this.marcas = data, console.log(data);});
+  async ngOnInit() {
+    let respuesta = await this.marcasService.getMarcas();
+    this.marcas = respuesta.data;
+    console.log(respuesta);
+    
   }
 
 }

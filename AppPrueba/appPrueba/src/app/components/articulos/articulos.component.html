@@ -1,13 +1,13 @@
 <app-header seccion="Articulos"></app-header>
 
 <ion-content>
-    <ion-card *ngFor="let articulo of articulos; index as i">
+    <ion-card *ngFor="let articulo of articulos; index as i" [routerLink]="[ articulo.articuloid]">
         <ion-img src="http://prueba.test:80/apiprueba/public/img/{{articulo.imagen}}"></ion-img>
         <ion-card-title> {{articulo.nombre_articulo}}</ion-card-title>
         <ion-card-content>{{articulo.descripcion_articulo}}</ion-card-content>
         <ion-item>
             <ion-card-subtitle>{{articulo.precio}}€</ion-card-subtitle>
-            <ion-button slot="end" (click)="favorito[i] = !favorito[i]">
+            <ion-button *ngIf="usuario" slot="end" (click)="favorito[i] = !favorito[i]">
                 <ion-icon color="danger" [name]=" favorito[i] ? 'heart':'heart-outline'"></ion-icon>
             </ion-button>
         </ion-item>

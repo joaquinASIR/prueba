@@ -22,24 +22,28 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('admin/marcas', MarcasController::class);
-Route::resource('admin/articulos', ArticulosController::class);
-Route::resource('admin/categorias', CategoriasController::class);
-Route::resource('admin/usuarios', UsuariosController::class);
+Route::get('admin/marcas', [MarcasController::class, 'index']);
+Route::get('admin/marcas/{marcaid}/articulos', [MarcasController::class,'getArticulos']);
+Route::get('admin/articulos', [ArticulosController::class, 'index']);
+/*  Route::resource('admin/categorias', CategoriasController::class);
+ */ Route::resource('admin/usuarios', UsuariosController::class);
 
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('registro', [AuthController::class, 'registro']);
 
-Route::get('user', [AuthController::class, 'getUser'])
-   ->middleware('auth:api');
+Route::get('admin/articulos/{articulo}', [ArticulosController::class,'show']);
+Route::get('admin/categorias', [CategoriasController::class, 'index']);
+Route::get('admin/categorias/{categoriaid}/articulos', [CategoriasController::class,'getArticulos']);
 
-Route::post('logout', [AuthController::class, 'logout'])
-    ->middleware('auth:api');
     
-
-
-/* Route::group(['middleware' => 'auth:api'], function () {
+    
+Route::group(['middleware' => ['auth:api']], function () {
+     //Route::resource('admin/categorias', CategoriasController::class);
+    Route::get('user', [AuthController::class, 'getUser']);
     Route::post('logout', [AuthController::class, 'logout']);
-    Route::get('usuario', [AuthController::class, 'getUsuario']);
-}); */
+
+});
+
+
+

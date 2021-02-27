@@ -5,10 +5,11 @@ import { ArticulosRoutingModule } from './articulos-routing.module';
 import { ArticulosComponent } from './articulos.component';
 import { IonicModule } from '@ionic/angular';
 import { ComunesModule } from '../comunes/comunes.module';
+import { ArticulosdetallesComponent } from './articulosdetalles/articulosdetalles.component';
 
 
 @NgModule({
-  declarations: [ArticulosComponent],
+  declarations: [ArticulosComponent, ArticulosdetallesComponent],
   imports: [
     CommonModule,
     ArticulosRoutingModule,

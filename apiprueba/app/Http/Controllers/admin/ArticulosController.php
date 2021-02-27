@@ -13,11 +13,17 @@ class ArticulosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $articulo = Articulos::all();
 
-        return  response()->json($articulo);
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Listado Articulos' ,
+            'data' => $articulo,
+            'code' => 401,
+            ]);
     }
 
     /**
@@ -47,9 +53,18 @@ class ArticulosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($articuloid)
     {
-        //
+        $articulos = Articulos::with('marcas')
+                            ->select('*')
+                            ->where('articuloid', '=', $articuloid)
+                            ->get();
+                return  response()->json([
+                'status' => 'success',
+                'message' => 'Articulo seleccionado' ,
+                'data' => $articulos[0],
+                'code' => 401,
+                ]);
     }
 
     /**

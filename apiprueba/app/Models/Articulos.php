@@ -19,7 +19,7 @@ class Articulos extends Model
     public $timestamps = false;
 
     public function Marcas() {
-        return $this->belongsTo(Marcas::class,'articulo_id','articulo_id');
+        return $this->belongsTo(Marcas::class,'marcaid','marcaid');
     }
 
     public function Categorias() {

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ArticulosService } from '../../../services/articulos.service';
+import { UsuariosService } from '../../../services/usuarios.service';
+import { IArticulo, MsnApiArticulos } from '../../../Interfaces/ArticulosInterface';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -10,17 +13,26 @@ import { ArticulosService } from '../../../services/articulos.service';
 })
 export class HeaderComponent implements OnInit {
 
+  public respuesta: MsnApiArticulos;
+  public articulo: IArticulo;
   articulos: any;
   public texto='';
+  usuario: any;
 
   @Input('seccion') seccion: string;
 
-  constructor(private articulosService: ArticulosService) { }
+  constructor(private articulosService: ArticulosService, private uService: UsuariosService, private route: ActivatedRoute) { 
+    this.articulos = this.route.snapshot.paramMap.get('articuloid');
+  }
 
-  ngOnInit() {
-    this.articulosService.getArticulos().subscribe(data => {
-      this.articulos = data, console.log(data);
-    });
+  async ngOnInit() {
+    let respuesta = await this.articulosService.getArticulos();
+    this.articulos = respuesta.data;
+    console.log(respuesta);
+      this.uService.userStorageObservable
+    .subscribe ( data => {
+      this.usuario = data;
+    })
   }
   buscar(event) {
     const busqueda = event.detail.value
@@ -28,4 +40,21 @@ export class HeaderComponent implements OnInit {
        console.log(this.texto);
     });
   }
+
+  ionViewWillEnter (){
+    this.uService.userStorageObservable
+      .subscribe ( data => {
+        this.usuario = data;
+        
+      })
+  }
+  
+  
+  async getUser() {
+      this.usuario = await this.uService.getUsuarioStorage();
+      
+  }
+  
+
+  
 }

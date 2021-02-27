@@ -10,6 +10,7 @@ import { UsuariosService } from './services/usuarios.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  anio: number;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -17,6 +18,7 @@ export class AppComponent {
     private uService: UsuariosService
   ) {
     this.initializeApp();
+    this.anio = new Date().getFullYear();
   }
   usuario :any;
 
@@ -44,6 +46,5 @@ export class AppComponent {
 
   async getUser() {
       this.usuario = await this.uService.getUsuarioStorage();
-      console.log (this.usuario);
   }
 }
