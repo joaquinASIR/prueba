@@ -1,7 +1,8 @@
-<app-header seccion="Articulos"></app-header>
+<ng-container *ngIf="articulos">
+    <app-header seccion="{{articulos.nombre_articulo}}"></app-header>
 
-<ion-content>
-    <ng-container *ngIf="articulos">
+    <ion-content>
+
         <ion-img src="http://prueba.test:80/apiprueba/public/img/{{articulos.imagen}}"></ion-img>
         <ion-title>{{articulos.nombre_articulo}}</ion-title>
         <p class="desc">{{articulos.descripcion_articulo}}</p>
@@ -17,6 +18,5 @@
             </ion-button>
         </ion-item>
 
-    </ng-container>
-
-</ion-content>
+    </ion-content>
+</ng-container>

@@ -11,12 +11,13 @@ import { FormsModule } from '@angular/forms'
 import { PipesModule } from '../../pipes/pipes.module';
 import { RegistroComponent } from './registro/registro.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PopoverComponent } from './popover/popover.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, LoginComponent, PortadaComponent, FaqComponent, InicioComponent,RegistroComponent],
-  exports: [HeaderComponent, LoginComponent, PortadaComponent, FaqComponent, InicioComponent,RegistroComponent],
+  declarations: [HeaderComponent, LoginComponent, PortadaComponent, FaqComponent, InicioComponent,RegistroComponent, PopoverComponent],
+  exports: [HeaderComponent, LoginComponent, PortadaComponent, FaqComponent, InicioComponent,RegistroComponent, PopoverComponent],
   imports: [
     CommonModule,
     ComunesRoutingModule,

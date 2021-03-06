@@ -40,6 +40,10 @@ const routes: Routes = [
   {
     path: 'categorias',
     loadChildren: () => import('./components/categorias/categorias.module').then(m => m.CategoriasModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./components/filtros/filtros.module').then( m => m.FiltrosModule)
   }
 ];
 @NgModule({

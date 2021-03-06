@@ -3,6 +3,8 @@ import { ArticulosService } from '../../../services/articulos.service';
 import { UsuariosService } from '../../../services/usuarios.service';
 import { IArticulo, MsnApiArticulos } from '../../../Interfaces/ArticulosInterface';
 import { ActivatedRoute } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../popover/popover.component';
 
 
 
@@ -21,7 +23,7 @@ export class HeaderComponent implements OnInit {
 
   @Input('seccion') seccion: string;
 
-  constructor(private articulosService: ArticulosService, private uService: UsuariosService, private route: ActivatedRoute) { 
+  constructor(private articulosService: ArticulosService, private uService: UsuariosService, private route: ActivatedRoute, private popoverController: PopoverController) { 
     this.articulos = this.route.snapshot.paramMap.get('articuloid');
   }
 
@@ -53,6 +55,15 @@ export class HeaderComponent implements OnInit {
   async getUser() {
       this.usuario = await this.uService.getUsuarioStorage();
       
+  }
+
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
   
 

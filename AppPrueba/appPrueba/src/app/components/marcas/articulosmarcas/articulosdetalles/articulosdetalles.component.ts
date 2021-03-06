@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticulosService } from '../../../../services/articulos.service';
 import { IArticulo } from '../../../../Interfaces/ArticulosInterface';
 import { ActivatedRoute } from '@angular/router';
+import { UsuariosService } from '../../../../services/usuarios.service';
 
 @Component({
   selector: 'app-articulosdetalles',
@@ -14,7 +15,7 @@ export class ArticulosdetallesComponent implements OnInit {
   public articulos: IArticulo;
   favorito: {};
 
-  constructor(private articulosService: ArticulosService, private route: ActivatedRoute) {
+  constructor(private articulosService: ArticulosService, private route: ActivatedRoute, public uService: UsuariosService) {
     this.articuloid = this.route.snapshot.paramMap.get('articuloid');
    }
 
@@ -22,6 +23,11 @@ export class ArticulosdetallesComponent implements OnInit {
     let respuesta = await this.articulosService.showArticulos(this.articuloid); 
     this.articulos = respuesta.data;
     console.log(this.articulos);
+  }
+
+  fav(){
+    this.favorito = !this.favorito
+    console.log(this.uService.usuario.id, this.uService.usuario.nombre_usuario);
   }
 
 }

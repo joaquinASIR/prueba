@@ -24,7 +24,6 @@ export class ArticulosService {
     })
   })
  }
-
   async showArticulos(articuloid): Promise<MsnApiArticulos>{
     console.log('Articuloid = ', articuloid);
     const ruta = `${ URL }/public/api/admin/articulos/${articuloid}`;
@@ -37,7 +36,6 @@ export class ArticulosService {
   }
   public buscarArticulos( articulos: string) {
     return this.http.get(`http://prueba.test:80/apiprueba/public/api/admin/articulos`)
-    
   }
 }
 

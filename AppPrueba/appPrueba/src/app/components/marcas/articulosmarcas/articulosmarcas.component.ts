@@ -19,7 +19,6 @@ export class ArticulosmarcasComponent implements OnInit {
 
   constructor(private mService: MarcasService, private route: ActivatedRoute, private uService: UsuariosService) {
         this.marcaid = this.route.snapshot.paramMap.get('marcaid');
-
    }
 
   async ngOnInit() {
@@ -44,6 +43,7 @@ export class ArticulosmarcasComponent implements OnInit {
   async getUser() {
       this.usuario = await this.uService.getUsuarioStorage();
   }
+
   
   }
   

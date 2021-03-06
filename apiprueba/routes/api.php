@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\ArticulosController;
 use App\Http\Controllers\admin\CategoriasController;
 use App\Http\Controllers\admin\UsuariosController;
 use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\filters\FiltrosArticulosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,7 @@ Route::get('admin/articulos', [ArticulosController::class, 'index']);
 /*  Route::resource('admin/categorias', CategoriasController::class);
  */ Route::resource('admin/usuarios', UsuariosController::class);
 
-
+ Route::post('articulos/filters', [ArticulosController::class, 'filtros']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('registro', [AuthController::class, 'registro']);
 
@@ -36,13 +37,14 @@ Route::get('admin/articulos/{articulo}', [ArticulosController::class,'show']);
 Route::get('admin/categorias', [CategoriasController::class, 'index']);
 Route::get('admin/categorias/{categoriaid}/articulos', [CategoriasController::class,'getArticulos']);
 
+
+Route::post('articulos/filters', [FiltrosArticulosController::class, 'filtros']);
     
     
 Route::group(['middleware' => ['auth:api']], function () {
      //Route::resource('admin/categorias', CategoriasController::class);
     Route::get('user', [AuthController::class, 'getUser']);
     Route::post('logout', [AuthController::class, 'logout']);
-
 });
 
 
