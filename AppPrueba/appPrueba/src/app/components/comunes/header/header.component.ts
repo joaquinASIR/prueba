@@ -23,8 +23,9 @@ export class HeaderComponent implements OnInit {
 
   @Input('seccion') seccion: string;
 
-  constructor(private articulosService: ArticulosService, private uService: UsuariosService, private route: ActivatedRoute, private popoverController: PopoverController) { 
+  constructor(private articulosService: ArticulosService, public uService: UsuariosService, private route: ActivatedRoute, private popoverController: PopoverController) { 
     this.articulos = this.route.snapshot.paramMap.get('articuloid');
+    console.log('header cargado');
   }
 
   async ngOnInit() {
@@ -34,6 +35,7 @@ export class HeaderComponent implements OnInit {
       this.uService.userStorageObservable
     .subscribe ( data => {
       this.usuario = data;
+      console.log(this.usuario);
     })
   }
   buscar(event) {
@@ -46,15 +48,15 @@ export class HeaderComponent implements OnInit {
   ionViewWillEnter (){
     this.uService.userStorageObservable
       .subscribe ( data => {
-        this.usuario = data;
-        
+       this.usuario = data;
+        console.log(this.usuario);
       })
   }
   
   
   async getUser() {
       this.usuario = await this.uService.getUsuarioStorage();
-      
+      console.log(this.usuario);
   }
 
   async presentPopover(ev: any) {

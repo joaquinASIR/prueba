@@ -1,13 +1,13 @@
 <ion-list>
     <ion-item>
-        <ion-range min="0" max="1000" color="secondary" dualKnobs="true" (ionChange)="changeRange($event)">
-            <ion-label slot="start">{{ IFiltros.precios[0] }}€</ion-label>
-            <ion-label slot="end">{{ IFiltros.precios[1] }}€</ion-label>
+        <ion-range min="0" max="200" color="secondary" dualKnobs="true" (ionChange)="changeRange($event)">
+            <ion-label slot="start">{{ IFiltros.precio[0] }}€</ion-label>
+            <ion-label slot="end">{{ IFiltros.precio[1] }}€</ion-label>
         </ion-range>
     </ion-item>
     <ion-title>Marcas</ion-title>
-    <ion-item *ngFor="let m of marcas">
-        <ion-checkbox> </ion-checkbox>
+    <ion-item *ngFor="let m of marcas; index as i">
+        <ion-checkbox (click)="selectmarca(m.nombre_marca, i)"> </ion-checkbox>
         <p>{{m.nombre_marca}}</p>
     </ion-item>
     <ion-title>Categorias</ion-title>
@@ -15,4 +15,5 @@
         <ion-checkbox> </ion-checkbox>
         <p>{{c.nombre_categoria}}</p>
     </ion-item>
+    <ion-button color="light" (click)="aplicar()" routerLink="articulos">Aplicar</ion-button>
 </ion-list>

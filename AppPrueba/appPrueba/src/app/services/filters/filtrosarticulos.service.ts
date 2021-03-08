@@ -11,7 +11,7 @@ const  URL = environment.url;
 @Injectable({
   providedIn: 'root'
 })
-export class ArticulosService {
+export class FiltrosarticulosService {
 
   respuesta : MsnApiArticulos;
   private articulosStorage = new Subject <IArticulo>();
@@ -20,11 +20,6 @@ export class ArticulosService {
   constructor(private http: HttpClient) { }
 
   getFilter(filtros: IFiltrosArticulos): Promise<MsnApiArticulos>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Accept' : 'application/json'
-      })
-    };
     let data = JSON.stringify(filtros) ;
     const ruta = `${ URL }/public/api/articulos/filters`;
     console.log(data);
@@ -38,5 +33,4 @@ export class ArticulosService {
       });
     });
   }
-
 }

@@ -5,6 +5,6 @@ interface IPrecio {
 
 export interface IFiltrosArticulos {
  //   precio?: IPrecio;
-    marcas: string[];
-    precios: number[];
+   // marcas: string[];
+    precio: number[];
 }

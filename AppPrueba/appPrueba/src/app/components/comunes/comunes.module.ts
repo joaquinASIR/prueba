@@ -7,7 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { FaqComponent } from './faq/faq.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { PipesModule } from '../../pipes/pipes.module';
 import { RegistroComponent } from './registro/registro.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -24,7 +24,8 @@ import { PopoverComponent } from './popover/popover.component';
     IonicModule,
     FormsModule,
     PipesModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ]
 })
 export class ComunesModule { }

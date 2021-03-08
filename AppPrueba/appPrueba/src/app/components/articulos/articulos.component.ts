@@ -3,6 +3,7 @@ import { ArticulosService } from '../../services/articulos.service';
 import { UsuariosService } from '../../services/usuarios.service';
 import { MsnApiArticulos, IArticulo } from '../../Interfaces/ArticulosInterface';
 import { ActivatedRoute } from '@angular/router';
+import { FiltrosarticulosService } from '../../services/filters/filtrosarticulos.service';
 
 @Component({
   selector: 'app-articulos',
@@ -19,7 +20,7 @@ export class ArticulosComponent implements OnInit {
 
   usuario: any;
  
-  constructor(private articulosService: ArticulosService, private uService: UsuariosService, private route: ActivatedRoute) {
+  constructor(private articulosService: ArticulosService, private uService: UsuariosService, private route: ActivatedRoute, private fArService: FiltrosarticulosService) {
     this.articulos = this.route.snapshot.paramMap.get('articuloid');
    }
 
@@ -31,6 +32,12 @@ export class ArticulosComponent implements OnInit {
       this.uService.userStorageObservable
     .subscribe ( data => {
       this.usuario = data;
+    });
+
+    this.fArService.articulosStorageObservable
+    .subscribe (respuesta => {
+      this.articulos = respuesta;
+      console.log(this.articulos);
     });
   }
 
@@ -50,5 +57,6 @@ export class ArticulosComponent implements OnInit {
 async getUser() {
     this.usuario = await this.uService.getUsuarioStorage();
 }
+
 
 }

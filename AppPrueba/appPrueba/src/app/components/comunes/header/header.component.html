@@ -3,7 +3,7 @@
         <ion-buttons>
             <ion-menu-button></ion-menu-button>
             <ion-title>{{seccion}}</ion-title>
-            <div *ngIf="!usuario; then thenBlock else elseBlock"></div>
+            <div *ngIf="!uService.usuario; then thenBlock else elseBlock"></div>
             <ng-template #thenBlock>
                 <ion-icon class="perfil-icon" name="log-in-outline" slot="end" routerLink="/login"></ion-icon>
             </ng-template>

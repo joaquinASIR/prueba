@@ -29,7 +29,6 @@ Route::get('admin/articulos', [ArticulosController::class, 'index']);
 /*  Route::resource('admin/categorias', CategoriasController::class);
  */ Route::resource('admin/usuarios', UsuariosController::class);
 
- Route::post('articulos/filters', [ArticulosController::class, 'filtros']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('registro', [AuthController::class, 'registro']);
 
