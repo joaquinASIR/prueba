@@ -7,7 +7,7 @@
         <ion-title>{{articulos.nombre_articulo}}</ion-title>
         <p class="desc">{{articulos.descripcion_articulo}}</p>
         <ion-item>
-            <ion-button slot="end" (click)="fav()">
+            <ion-button slot="end" (click)="fav(articulos.articuloid)">
                 <ion-icon color="danger" [name]=" favorito ? 'heart':'heart-outline'"></ion-icon>
             </ion-button>
             <p class="precio">{{articulos.precio}}€</p>

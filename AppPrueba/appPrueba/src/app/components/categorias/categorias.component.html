@@ -2,11 +2,13 @@
 
 
 <ion-content>
-    <ion-card *ngFor="let c of categorias" [routerLink]="[ 'articulos', c.categoriaid]">
-        <ion-img src="http://prueba.test:80/apiprueba/public/img/{{c.logo}}"></ion-img>
+    <ion-icon class="delete" name="add-outline" routerLink="newcategoria"></ion-icon>
+    <ion-card *ngFor="let c of categorias">
+        <ion-img src="http://prueba.test:80/apiprueba/public/img/{{c.logo}}" [routerLink]="[ 'articulos', c.categoriaid]"></ion-img>
         <div>
             <ion-title>{{c.nombre_categoria}} </ion-title>
+            <ion-icon name="trash-outline" (click)="borrarcat(c.categoriaid)"></ion-icon>
+            <ion-icon name="create-outline" [routerLink]="[ 'editcategoria', c.categoriaid]"></ion-icon>
         </div>
-
     </ion-card>
 </ion-content>

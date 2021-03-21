@@ -37,6 +37,20 @@ Route::get('admin/categorias', [CategoriasController::class, 'index']);
 Route::get('admin/categorias/{categoriaid}/articulos', [CategoriasController::class,'getArticulos']);
 
 
+    Route::get('admin/deseados', [DeseadosController::class, 'index']);
+    Route::post('admin/nuevodes', [DeseadosController::class, 'nuevoDeseado']);
+/*     Route::get('admin/deletedes/{id}', [DeseadosController::class, 'borrarDeseado']);
+ */
+Route::post('admin/deletedes', [DeseadosController::class, 'borrarDeseado']);
+
+
+Route::post('admin/categorias', [CategoriasController::class,'newCategoria']);
+Route::put('admin/{categoriaid}/upcategorias', [CategoriasController::class,'upCategorias']);
+Route::get('admin/categorias/{categoriaid}/remove', [CategoriasController::class,'delCategoria']);
+Route::group(['middleware' => 'rol.admin'], function () {
+
+});
+
 Route::post('articulos/filters', [FiltrosArticulosController::class, 'filtros']);
     
     
@@ -44,6 +58,7 @@ Route::group(['middleware' => ['auth:api']], function () {
      //Route::resource('admin/categorias', CategoriasController::class);
     Route::get('user', [AuthController::class, 'getUser']);
     Route::post('logout', [AuthController::class, 'logout']);
+
 });
 
 

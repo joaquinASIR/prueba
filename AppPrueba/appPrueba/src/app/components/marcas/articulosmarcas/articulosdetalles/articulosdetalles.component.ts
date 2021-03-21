@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticulosService } from '../../../../services/articulos.service';
-import { IArticulo } from '../../../../Interfaces/ArticulosInterface';
+import { IArticulo, IDeseado } from '../../../../Interfaces/ArticulosInterface';
 import { ActivatedRoute } from '@angular/router';
 import { UsuariosService } from '../../../../services/usuarios.service';
+import { DeseadosService } from '../../../../services/deseados.service';
+
 
 @Component({
   selector: 'app-articulosdetalles',
@@ -14,8 +16,11 @@ export class ArticulosdetallesComponent implements OnInit {
   public articuloid: string;
   public articulos: IArticulo;
   favorito: {};
-
-  constructor(private articulosService: ArticulosService, private route: ActivatedRoute, public uService: UsuariosService) {
+  public deseado: IDeseado = {
+    articuloid: 0,
+    id: 0
+  };
+  constructor(private articulosService: ArticulosService, private route: ActivatedRoute, public uService: UsuariosService, private newDeseadoArticulos: DeseadosService ) {
     this.articuloid = this.route.snapshot.paramMap.get('articuloid');
    }
 
@@ -25,9 +30,20 @@ export class ArticulosdetallesComponent implements OnInit {
     console.log(this.articulos);
   }
 
-  fav(){
-    this.favorito = !this.favorito
-    console.log(this.uService.usuario.id, this.uService.usuario.nombre_usuario);
+  async fav(codigoart){
+    this.favorito = !this.favorito;
+    if (this.favorito) {
+      console.log(this.uService.usuario.id, this.uService.usuario.nombre_usuario);
+      this.deseado.articuloid = codigoart;
+      this.deseado.id = this.uService.usuario.id;
+      console.log(this.deseado);
+      let respuesta = await this.newDeseadoArticulos.getnewDeseados(this.deseado)
+    } else if (!this.favorito) {
+      console.log(this.uService.usuario.id, this.uService.usuario.nombre_usuario);
+      this.deseado.articuloid = codigoart;
+      this.deseado.id = this.uService.usuario.id;
+      console.log(this.deseado);
+      let respuesta = await this.newDeseadoArticulos.getdeleteDeseados(this.deseado)
+    }    
   }
-
 }

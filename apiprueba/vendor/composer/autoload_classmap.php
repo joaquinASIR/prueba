@@ -15,6 +15,7 @@ return array(
     'App\\Http\\Controllers\\admin\\MarcasController' => $baseDir . '/app/Http/Controllers/admin/MarcasController.php',
     'App\\Http\\Controllers\\admin\\PerfilesController' => $baseDir . '/app/Http/Controllers/admin/PerfilesController.php',
     'App\\Http\\Controllers\\admin\\UsuariosController' => $baseDir . '/app/Http/Controllers/admin/UsuariosController.php',
+    'App\\Http\\Controllers\\filters\\FiltrosArticulosController' => $baseDir . '/app/Http/Controllers/filters/FiltrosArticulosController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',

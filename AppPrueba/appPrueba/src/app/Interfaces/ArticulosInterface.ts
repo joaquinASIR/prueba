@@ -25,6 +25,11 @@ export interface IMarca {
     articulos          ?:    IArticulo[]
 }
 
+export interface IDeseado {
+    articuloid    ?:    number;
+    id     ?:    number;
+}
+
 type Marcas = IMarca[] | IMarca;
 
 type Categorias = ICategoria[] | ICategoria;
@@ -53,4 +58,24 @@ export interface MsnApiArticulos {
     errors    ?:    string;
     code      ?:    number;
     data      ?:    IArticulo
+}
+
+export interface MsnApiDeseados {
+    status    ?:    string;
+    message   ?:    string;
+    errors    ?:    string;
+    code      ?:    number;
+    data      ?:    IArticulo
+}
+
+export interface MsnApiNewCat {
+    status?: string;
+    message?: string;
+    errors?: string;
+    data?: ICategoria;
+}
+
+export interface editCategoria {
+    nombre_categoria    ?: any;
+    logo    ?:    any;
 }

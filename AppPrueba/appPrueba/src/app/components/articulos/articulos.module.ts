@@ -6,6 +6,7 @@ import { ArticulosComponent } from './articulos.component';
 import { IonicModule } from '@ionic/angular';
 import { ComunesModule } from '../comunes/comunes.module';
 import { ArticulosdetallesComponent } from './articulosdetalles/articulosdetalles.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ArticulosdetallesComponent } from './articulosdetalles/articulosdetalle
     CommonModule,
     ArticulosRoutingModule,
     IonicModule,
-    ComunesModule
+    ComunesModule,
+    FormsModule
   ]
 })
 export class ArticulosModule { }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 use App\Models\Categorias;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class CategoriasController extends Controller
 {
@@ -21,6 +23,75 @@ class CategoriasController extends Controller
             'code' => 401,
             'data' => $articulos
         ]);
+    }
+
+    public function newCategoria(Request $request){
+        $rules = [
+            'categoriaid'        => 'required|integer',
+            'nombre_categoria'   => 'required',
+            'logo'               => 'required'
+        ];
+
+        #Paso1-. Validación de los campos del usuario
+        $input = $request->all();
+        $validator = Validator::make($input, $rules);
+//        dd($validator->errors());
+        if ($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Error al rellenar los campos',
+                'errors'=> $validator->errors()
+            ], 200);
+        }
+
+        $categoria = Categorias::create(array(
+            'categoriaid'        => $request->input('categoriaid'),
+            'nombre_categoria'   => $request->input('nombre_categoria'),
+            'logo'               => $request->input('logo')
+        ));
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Categoria agregada',
+            'code' => 401,
+            'data' => $categoria
+        ]);
+    }
+
+    public function delCategoria($categoriaid)
+    {   
+        $result = Categorias::where('categoriaid', $categoriaid)->delete();
+        //$articulo = Articulo::find($articuloid);
+    //    $result = $articulo[0]->delete();
+        if ($result == 1){
+            $mensaje = "Categoria ". $categoriaid. " eliminado correctamente";
+        }else{
+            $mensaje = "Categoria ". $categoriaid. " No eliminado";
+        };
+
+        return response()->json([
+            'status' => 'success',
+            'message' => $mensaje,
+            'code' => 401,
+        ]);
+    }
+
+    public function upCategorias(Categorias $categoria, Request $request, $categoriaid)
+{
+    $categoria = Categorias::where('categoriaid', $categoriaid)->update($request->only('nombre_categoria', 'logo'));
+    
+    
+    if ($categoria === null) {
+        return response()->json('', 404);
+    }
+    
+    return  response()->json([
+        'status' => 'success',
+        'message' => 'Categorias.',
+        'code' => 401,
+        'data' => $categoria
+    ]);
+    
     }
 
     public function index()

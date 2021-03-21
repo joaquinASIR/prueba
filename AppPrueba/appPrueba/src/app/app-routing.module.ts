@@ -44,6 +44,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./components/filtros/filtros.module').then( m => m.FiltrosModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./components/deseados/deseados.module').then( m => m.DeseadosModule)
   }
 ];
 @NgModule({
