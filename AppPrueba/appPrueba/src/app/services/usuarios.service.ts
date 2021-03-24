@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IUsuario, MsnApiLogin, MsnApiRegister } from '../Interfaces/UsuarioInterface';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
 import { Storage } from '@ionic/storage'; 
 
@@ -20,12 +20,12 @@ export class UsuariosService {
   constructor(private http: HttpClient, private storage: Storage ) { }
 
   public getUsuarios(){
-    return this.http.get('http://prueba.test:80/apiprueba/public/api/user');
+    return this.http.get('http://shopine.online/index.php/api/user');
   }
 
   login (email: string, password: string): Promise<MsnApiLogin>{
     const data = { email, password };
-    const ruta = `${ URL }/public/api/login`;
+    const ruta = `${ URL }/api/login`;
     console.log (ruta, data);
     return new Promise( resolve => {
       this.http.post<MsnApiLogin>(ruta, data)
@@ -61,7 +61,7 @@ export class UsuariosService {
 
   registro (usuario: IUsuario): Promise<MsnApiRegister>{
 
-    const ruta = `${ URL }/public/api/registro`;
+    const ruta = `${ URL }/api/registro`;
     const data = usuario;
     console.log (ruta, data);
 

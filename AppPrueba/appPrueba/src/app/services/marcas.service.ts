@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UsuariosService } from './usuarios.service';
 import { MsnApiMarcas } from '../Interfaces/ArticulosInterface';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 
 const URL= environment.url;
@@ -19,7 +19,7 @@ export class MarcasService {
   } */
 
   async getArticulosMarcas(marcaid):Promise<MsnApiMarcas>{
-    const ruta = `${ URL }/public/api/admin/marcas/${marcaid}/articulos`;    
+    const ruta = `${ URL }/api/admin/marcas/${marcaid}/articulos`;    
     return new Promise ( resolve => {
       this.http.get<MsnApiMarcas>(ruta)
         .subscribe ( respuesta => {
@@ -30,7 +30,7 @@ export class MarcasService {
   }
 
   async getMarcas(): Promise<MsnApiMarcas>{
-    const ruta = `${ URL }/public/api/admin/marcas`;
+    const ruta = `${ URL }/api/admin/marcas`;
     return new Promise ( resolve => {
       this.http.get<MsnApiMarcas>(ruta)
         .subscribe ( respuesta => {

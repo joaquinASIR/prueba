@@ -14,13 +14,20 @@ export class EditcategoriaComponent implements OnInit {
   public categoriaid: string; 
   nombre_categoria: any;
   logo: any;
+  categorias: any;
 
 
   constructor(private categoriasService: CategoriasService, private navController: NavController, private messService: UiServiceService, private route: ActivatedRoute) {
     this.categoriaid = this.route.snapshot.paramMap.get('categoriaid');
    }
 
-  ngOnInit() {}
+   async ngOnInit() {
+    let respuesta = await this.categoriasService.getCategorias();
+    if (respuesta.status == 'success'){
+      this.categorias = respuesta.data;
+      console.log(this.categorias);
+    }
+  }
 
   async updCategoria(fEditCategoria) {
 

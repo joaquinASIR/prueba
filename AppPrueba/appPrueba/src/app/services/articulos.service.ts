@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { MsnApiArticulos } from '../Interfaces/ArticulosInterface';
 import { UsuariosService } from './usuarios.service';
 
@@ -16,7 +16,7 @@ export class ArticulosService {
   constructor(private http: HttpClient, private uService: UsuariosService) { }
 
  async getArticulos(): Promise<MsnApiArticulos>{
-  const ruta = `${ URL }/public/api/admin/articulos`;
+  const ruta = `${ URL }/api/admin/articulos`;
   return new Promise (resolve => {
     this.http.get<MsnApiArticulos>(ruta)
     .subscribe(respuesta => {
@@ -26,7 +26,7 @@ export class ArticulosService {
  }
   async showArticulos(articuloid): Promise<MsnApiArticulos>{
     console.log('Articuloid = ', articuloid);
-    const ruta = `${ URL }/public/api/admin/articulos/${articuloid}`;
+    const ruta = `${ URL }/api/admin/articulos/${articuloid}`;
     return new Promise ( resolve => {
       this.http.get<MsnApiArticulos>(ruta)
       .subscribe (respuesta => {
@@ -35,7 +35,7 @@ export class ArticulosService {
     })
   }
   public buscarArticulos( articulos: string) {
-    return this.http.get(`http://prueba.test:80/apiprueba/public/api/admin/articulos`)
+    return this.http.get(`http://shopine.online/index.php/api/admin/articulos`)
   }
 }
 

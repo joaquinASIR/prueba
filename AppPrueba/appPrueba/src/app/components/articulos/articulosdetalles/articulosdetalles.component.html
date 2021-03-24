@@ -1,13 +1,11 @@
 <ng-container *ngIf="articulos">
     <app-header seccion="{{articulos.nombre_articulo}}"></app-header>
-
     <ion-content>
-
-        <ion-img src="http://prueba.test:80/apiprueba/public/img/{{articulos.imagen}}"></ion-img>
+        <ion-img src="http://161.97.171.29/apiprueba/public/img/{{articulos.imagen}}"></ion-img>
         <ion-title>{{articulos.nombre_articulo}}</ion-title>
         <p class="desc">{{articulos.descripcion_articulo}}</p>
         <ion-item>
-            <ion-button slot="end" (click)="favorito = !favorito">
+            <ion-button slot="end" (click)="fav(articulos.articuloid)">
                 <ion-icon color="danger" [name]=" favorito ? 'heart':'heart-outline'"></ion-icon>
             </ion-button>
             <p class="precio">{{articulos.precio}}€</p>
@@ -17,6 +15,5 @@
                 <ion-icon color="dark" name="cart"></ion-icon>
             </ion-button>
         </ion-item>
-
     </ion-content>
 </ng-container>

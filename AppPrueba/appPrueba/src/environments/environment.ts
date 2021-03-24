@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: 'http://prueba.test:80/apiprueba'
+  //url: 'http://prueba.test:80/apiprueba/public'
+  url: 'http://shopine.online/index.php'
 };
 
 /*

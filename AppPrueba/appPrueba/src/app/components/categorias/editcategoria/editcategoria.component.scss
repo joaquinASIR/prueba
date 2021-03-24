@@ -1,0 +1,19 @@
+ion-button {
+    --background: none;
+    background-color: rgba(201, 188, 74, 0.71);
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px;
+    width: 163px;
+    height: 50px;
+    color: black;
+    margin-top: 10px;
+}
+
+ion-item.item-has-focus>ion-label {
+    color: rgb(114, 133, 32) !important;
+}
+
+ion-text {
+    font-family: 'Yusei Magic', sans-serif;
+    text-decoration: underline;
+}

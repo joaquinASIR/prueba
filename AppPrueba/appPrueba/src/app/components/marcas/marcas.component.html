@@ -2,7 +2,7 @@
 
 <ion-content>
     <ion-card *ngFor="let marca of marcas" [routerLink]="[ 'articulos', marca.marcaid]">
-        <ion-img src="http://prueba.test:80/apiprueba/public/img/{{marca.logo}}"></ion-img>
+        <ion-img src="http://161.97.171.29/apiprueba/public/img/{{marca.logo}}"></ion-img>
         <ion-title>{{marca.nombre_marca}} </ion-title>
         <ion-card-content>{{marca.descripcion_marca}}</ion-card-content>
     </ion-card>

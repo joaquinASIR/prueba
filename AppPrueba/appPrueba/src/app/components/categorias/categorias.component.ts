@@ -3,6 +3,8 @@ import { CategoriasService } from '../../services/categorias.service';
 import { ICategoria } from '../../Interfaces/ArticulosInterface';
 import { ActivatedRoute } from '@angular/router';
 import { UiServiceService } from '../../services/ui-service.service';
+import { UsuariosService } from '../../services/usuarios.service';
+import { IUsuario } from '../../Interfaces/UsuarioInterface';
 
 
 @Component({
@@ -15,8 +17,9 @@ export class CategoriasComponent implements OnInit {
   categorias: any;
   categoria: ICategoria[];
   categoriaid: any;
+  usuario: IUsuario;
 
-  constructor(private categoriasService: CategoriasService, private route: ActivatedRoute, private aService: UiServiceService) {
+  constructor(private categoriasService: CategoriasService, private route: ActivatedRoute, private aService: UiServiceService, private uService: UsuariosService) {
     this.categorias = this.route.snapshot.paramMap.get('categoriaid');
    }
 
@@ -26,6 +29,11 @@ export class CategoriasComponent implements OnInit {
       this.categorias = respuesta.data;
       console.log(this.categorias);
     }
+    this.uService.userStorageObservable
+    .subscribe ( data => {
+      this.usuario = data;
+      console.log (this.usuario );
+    })
   }
 
   async borrarcat(categoriaid){
@@ -36,4 +44,17 @@ export class CategoriasComponent implements OnInit {
       this.aService.alertaborrado(categoriaid);
     }
   }
+
+  ionViewWillEnter (){
+    this.uService.userStorageObservable
+      .subscribe ( data => {
+        this.usuario = data;
+      })
+  }
+  
+  
+  async getUser() {
+      this.usuario = await this.uService.getUsuarioStorage();
+  }
+  
 }

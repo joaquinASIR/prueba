@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { UsuariosService } from './usuarios.service';
 import { MsnApiDeseados, IDeseado } from '../Interfaces/ArticulosInterface';
 
@@ -13,7 +13,7 @@ export class DeseadosService {
   constructor(private http: HttpClient, private uService: UsuariosService) { }
   async getDeseados(): Promise<MsnApiDeseados>{
     const token = await this.uService.getToken();
-    const ruta = `${ URL }/public/api/admin/deseados`;
+    const ruta = `${ URL }/api/admin/deseados`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept' : 'application/json',
@@ -29,7 +29,7 @@ export class DeseadosService {
   }
 
   async getnewDeseados(deseados: IDeseado): Promise<MsnApiDeseados>{
-    const ruta = `${ URL }/public/api/admin/nuevodes`;
+    const ruta = `${ URL }/api/admin/nuevodes`;
     const data = deseados;
 
     return new Promise (resolve => {
@@ -41,7 +41,7 @@ export class DeseadosService {
   }
 
   async getdeleteDeseados(deseados: IDeseado): Promise<MsnApiDeseados>{
-    const ruta = `${ URL }/public/api/admin/deletedes`;
+    const ruta = `${ URL }/api/admin/deletedes`;
     const data = deseados;
     return new Promise ( resolve => {
       this.http.post<MsnApiDeseados>(ruta, data)

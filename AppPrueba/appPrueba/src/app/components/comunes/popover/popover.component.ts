@@ -59,4 +59,13 @@ export class PopoverComponent implements OnInit {
       let respuesta = await this.filterArticulosService.getFilter(this.IFiltros);
       this.items = [];
   }
+
+  async reiniciar(){
+    //   this.IFiltros.marcas = this.items;
+    this.IFiltros.precio[0] = 0;
+   this.IFiltros.precio[1] = 200;
+   let respuesta = await this.filterArticulosService.getFilter(this.IFiltros);
+      this.items = [];
+
+    }
 }

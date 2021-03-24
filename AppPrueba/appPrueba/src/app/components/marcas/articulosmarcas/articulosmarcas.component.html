@@ -4,7 +4,7 @@
 <ng-container *ngFor="let m of marcas">
     <ion-content>
         <ion-card *ngFor="let a of m.articulos; index as i" [routerLink]="[a.articuloid]">
-            <ion-img src="http://prueba.test:80/apiprueba/public/img/{{a.imagen}}"></ion-img>
+            <ion-img src="http://161.97.171.29/apiprueba/public/img/{{a.imagen}}"></ion-img>
             <ion-card-title> {{a.nombre_articulo}}</ion-card-title>
             <ion-card-content>{{a.descripcion_articulo}}</ion-card-content>
             <ion-item>

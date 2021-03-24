@@ -2,7 +2,7 @@ import { MsnApiCategorias } from './../Interfaces/ArticulosInterface';
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { UsuariosService } from './usuarios.service';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { ICategoria, MsnApiNewCat } from '../Interfaces/ArticulosInterface';
 
 
@@ -28,7 +28,7 @@ export class CategoriasService {
   }
   async getArticulosCategorias(categoriaid):Promise<MsnApiCategorias>{
     const token = await this.uService.getToken();
-    const ruta = `${ URL }/public/api/admin/categorias/${categoriaid}/articulos`;
+    const ruta = `${ URL }/api/admin/categorias/${categoriaid}/articulos`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept' : 'application/json',
@@ -46,7 +46,7 @@ export class CategoriasService {
   }
   async getCategorias(): Promise<MsnApiCategorias>{
     const token = await this.uService.getToken();
-    const ruta = `${ URL }/public/api/admin/categorias`;
+    const ruta = `${ URL }/api/admin/categorias`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept' : 'application/json',
@@ -64,7 +64,7 @@ export class CategoriasService {
   async newCategoria (categoria: ICategoria): Promise<MsnApiNewCat>{
     console.log(categoria);
   
-    const ruta = `${ URL }/public/api/admin/categorias`;
+    const ruta = `${ URL }/api/admin/categorias`;
     const data = categoria;
     console.log (ruta, data);
   
@@ -79,7 +79,7 @@ export class CategoriasService {
   }
   
   async delCategoria(categoriaid): Promise<MsnApiCategorias>{
-    const ruta = `${ URL }/public/api/admin/categorias/${categoriaid}/remove`;
+    const ruta = `${ URL }/api/admin/categorias/${categoriaid}/remove`;
     console.log(ruta);
     return new Promise ( resolve => {
       this.http.get<MsnApiCategorias>(ruta)
@@ -91,7 +91,7 @@ export class CategoriasService {
   }
 
   async updCategoria(categoriaid, nombre_categoria: string, logo: string): Promise<MsnApiCategorias>{
-    const ruta =  `${ URL }/public/api/admin/${categoriaid}/upcategorias`;;
+    const ruta =  `${ URL }/api/admin/${categoriaid}/upcategorias`;;
     const data = { nombre_categoria, logo };
     console.log(ruta);
     return new Promise ( resolve => {

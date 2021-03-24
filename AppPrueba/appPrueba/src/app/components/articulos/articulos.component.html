@@ -2,7 +2,7 @@
 
 <ion-content>
     <ion-card *ngFor="let articulo of articulos; index as i" [routerLink]="[ articulo.articuloid]">
-        <ion-img src="http://prueba.test:80/apiprueba/public/img/{{articulo.imagen}}"></ion-img>
+        <ion-img src="http://161.97.171.29/apiprueba/public/img/{{articulo.imagen}}"></ion-img>
         <ion-card-title> {{articulo.nombre_articulo}}</ion-card-title>
         <ion-card-content>{{articulo.descripcion_articulo}}</ion-card-content>
         <ion-item>
